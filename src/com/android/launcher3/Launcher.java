@@ -599,7 +599,7 @@ public class Launcher extends Activity
 
     public void onCustomContentLaunch() {
         if(isGelIntegrationEnabled() && isGelIntegrationSupported()) {
-            GelIntegrationHelper.getInstance().registerSwipeBackGestureListenerAndStartGel(this);
+            GelIntegrationHelper.getInstance().registerSwipeBackGestureListenerAndStartGel(this, mWorkspace.isLayoutRtl());
         }
     }
 
