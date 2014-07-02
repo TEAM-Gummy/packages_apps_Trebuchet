@@ -44,4 +44,7 @@
     <color name="settings_bg_selected_color">#26000000</color>
     <color name="settings_transition_selected_color">#A0a09e99</color>
     <color name="settings_listitem_pressed_color">#A0a09e99</color>
+
+    <color name="dynamic_grid_preview_background">#FFFFFFFF</color>
+    <color name="dynamic_grid_preview_foreground">#FF000000</color>
 </resources>
