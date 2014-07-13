@@ -2503,10 +2503,11 @@ public class Workspace extends SmoothPagedView
 
             float mOverviewPanelSlideScale = 1.0f;
 
-            if (overviewToWorkspace) {
+            if (overviewToWorkspace || stateIsNormal) {
+                ((SlidingUpPanelLayout) overviewPanel).collapsePane();
                 overviewPanel.setScaleY(1.0f);
                 mOverviewPanelSlideScale = 3.0f;
-            } else if (workspaceToOverview) {
+            } else if (workspaceToOverview || stateIsOverview) {
                 overviewPanel.setScaleY(3.0f);
                 mOverviewPanelSlideScale = 1.0f;
             }
@@ -2518,7 +2519,7 @@ public class Workspace extends SmoothPagedView
             overviewPanelScale.setListener(new AnimatorListener() {
                 @Override
                 public void onAnimationStart(Animator animation) {
-                    if (workspaceToOverview) {
+                    if (workspaceToOverview || stateIsOverview) {
                         overviewPanel.setAlpha(finalOverviewPanelAlpha);
                         AlphaUpdateListener.updateVisibility(overviewPanel);
                     }
@@ -2526,7 +2527,7 @@ public class Workspace extends SmoothPagedView
 
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    if (overviewToWorkspace) {
+                    if (overviewToWorkspace || stateIsNormal) {
                         overviewPanel.setAlpha(finalOverviewPanelAlpha);
                         AlphaUpdateListener.updateVisibility(overviewPanel);
                     }
