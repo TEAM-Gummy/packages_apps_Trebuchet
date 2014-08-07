@@ -23,7 +23,7 @@
     android:versionName="@string/application_version"
     android:versionCode="1000">
 
-    <uses-sdk android:targetSdkVersion="19" android:minSdkVersion="16"/>
+    <uses-sdk android:targetSdkVersion="19" android:minSdkVersion="17"/>
 
     <permission
         android:name="com.android.launcher3.permission.PRELOAD_WORKSPACE"
