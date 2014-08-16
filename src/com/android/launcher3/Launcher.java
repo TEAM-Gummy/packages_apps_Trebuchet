@@ -3645,6 +3645,7 @@ public class Launcher extends Activity
         if (resetPageToZero) {
             mAppsCustomizeLayout.reset();
         }
+        mAppsCustomizeContent.sortApps();
         showAppsCustomizeHelper(animated, false, contentType);
         mAppsCustomizeLayout.requestFocus();
 
