@@ -1045,10 +1045,6 @@ public class Launcher extends Activity
 
         updateGridIfNeeded();
 
-        if(isGelIntegrationEnabled() && isGelIntegrationSupported()) {
-            GelIntegrationHelper.getInstance().handleGelResume();
-        }
-
         // Restore the previous launcher state
         if (mOnResumeState == State.WORKSPACE) {
             showWorkspace(false);
