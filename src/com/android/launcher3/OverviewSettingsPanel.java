@@ -54,6 +54,7 @@ public class OverviewSettingsPanel {
                     res.getString(R.string.scroll_effect_text),
                     res.getString(R.string.icon_labels),
                     res.getString(R.string.scrolling_wallpaper),
+                    res.getString(R.string.homescreen_rotation),
                     res.getString(R.string.grid_size_text)};
         } else {
             values = new String[]{
@@ -61,6 +62,7 @@ public class OverviewSettingsPanel {
                     res.getString(R.string.scroll_effect_text),
                     res.getString(R.string.icon_labels),
                     res.getString(R.string.scrolling_wallpaper),
+                    res.getString(R.string.homescreen_rotation),
                     res.getString(R.string.grid_size_text)};
         }
 

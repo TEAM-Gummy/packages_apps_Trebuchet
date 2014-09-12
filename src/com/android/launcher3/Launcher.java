@@ -398,6 +398,7 @@ public class Launcher extends Activity
             = new ArrayList<PendingAddArguments>();
 
     public static boolean sForceEnableRotation = isPropertyEnabled(FORCE_ENABLE_ROTATION_PROPERTY);
+    private boolean mEnableRotation;
 
     private static class PendingAddArguments {
         int requestCode;
@@ -581,6 +582,10 @@ public class Launcher extends Activity
         } catch (Settings.SettingNotFoundException e) {
             sAnimatorDurationScale = 1f;
         }
+
+        mEnableRotation = SettingsProvider.getBoolean(this,
+                SettingsProvider.SETTINGS_UI_HOMESCREEN_ROTATION,
+                R.bool.preferences_interface_homescreen_rotation_default);
 
         AnimatorScaleObserver obs = new AnimatorScaleObserver(new Handler());
         getContentResolver().registerContentObserver(Settings.Global.CONTENT_URI, true, obs);
@@ -1108,6 +1113,9 @@ public class Launcher extends Activity
 
         mPaused = false;
         sPausedFromUserAction = false;
+        if (settingsChanged()) {
+            android.os.Process.killProcess(android.os.Process.myPid());
+        }
         if (mRestoring || mOnResumeNeedsLoad) {
             mWorkspaceLoading = true;
             mModel.startLoader(true, PagedView.INVALID_RESTORE_PAGE);
@@ -4641,8 +4649,10 @@ public class Launcher extends Activity
     }
 
     public boolean isRotationEnabled() {
-        boolean enableRotation = sForceEnableRotation ||
-                getResources().getBoolean(R.bool.allow_rotation);
+       boolean enableRotation = sForceEnableRotation ||
+                SettingsProvider.getBoolean(this,
+                SettingsProvider.SETTINGS_UI_HOMESCREEN_ROTATION,
+                R.bool.preferences_interface_homescreen_rotation_default) || mEnableRotation;
         return enableRotation;
     }
     public void lockScreenOrientation() {
@@ -4662,6 +4672,8 @@ public class Launcher extends Activity
                     }
                 }, mRestoreScreenOrientationDelay);
             }
+        } else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         }
     }
 

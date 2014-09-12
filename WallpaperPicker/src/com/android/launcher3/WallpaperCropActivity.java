@@ -45,6 +45,7 @@ import android.widget.Toast;
 
 import com.android.gallery3d.common.Utils;
 import com.android.gallery3d.exif.ExifInterface;
+import com.android.launcher3.settings.SettingsProvider;
 import com.android.photos.BitmapRegionTileSource;
 import com.android.photos.BitmapRegionTileSource.BitmapSource;
 
@@ -176,7 +177,9 @@ public class WallpaperCropActivity extends Activity {
     }
 
     public boolean enableRotation() {
-        return getResources().getBoolean(R.bool.allow_rotation);
+        return SettingsProvider.getBoolean(this,
+                SettingsProvider.SETTINGS_UI_HOMESCREEN_ROTATION,
+                R.bool.preferences_interface_homescreen_rotation_default);
     }
 
     public static String getSharedPreferencesKey() {

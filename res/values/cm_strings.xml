@@ -88,4 +88,7 @@
     <!-- Dialog -->
     <string name="dialog_confirm">Confirm</string>
 
+    <!-- Home screen rotation -->
+    <string name="homescreen_rotation">Rotation</string>
+
 </resources>

@@ -143,6 +143,12 @@ public class SettingsPinnedHeaderAdapter extends PinnedHeaderListAdapter {
                     R.string.setting_state_on) : res.getString(
                     R.string.setting_state_off);
             ((TextView) v.findViewById(R.id.item_state)).setText(state);
+        } else if (title.equals(res.getString(R.string.homescreen_rotation))) {
+            boolean current = mLauncher.isRotationEnabled();
+            String state = current ? res.getString(
+                    R.string.setting_state_on) : res.getString(
+                    R.string.setting_state_off);
+            ((TextView) v.findViewById(R.id.item_state)).setText(state);
         } else if (title.equals(res.getString(R.string.grid_size_text))) {
             updateDynamicGridSizeSettingsItem(v);
         } else {
@@ -289,6 +295,13 @@ public class SettingsPinnedHeaderAdapter extends PinnedHeaderListAdapter {
                         v,
                         SettingsProvider.SETTINGS_UI_HOMESCREEN_SCROLLING_WALLPAPER_SCROLL,
                         R.bool.preferences_interface_homescreen_scrolling_wallpaper_scroll_default);
+                mLauncher.setUpdateDynamicGrid();
+            } else if (value.equals(res
+                    .getString(R.string.homescreen_rotation))) {
+                onSettingsBooleanChanged(
+                        v,
+                        SettingsProvider.SETTINGS_UI_HOMESCREEN_ROTATION,
+                        R.bool.preferences_interface_homescreen_rotation_default);
                 mLauncher.setUpdateDynamicGrid();
             } else if (value.equals(res
                     .getString(R.string.search_screen_left_text)) &&
